@@ -3,44 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing Estimator</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Custom Feature Selection Form</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F7F9FB;
+            color: #333;
+        }
+
+        form {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .pill {
+            padding: 10px 20px;
+            border: 1px solid #DFDFDF;
+            border-radius: 20px;
+            background-color: #E9ECEF;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .pill.selected {
+            background-color: #28A745;
+            color: #FFFFFF;
+        }
+
+        .pill:hover {
+            background-color: #D4EDDA;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #DFDFDF;
+            background-color: #FFFFFF;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #000000;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #444444;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Left Section -->
-        <div class="left-section">
-            <!-- Core Features -->
-            <div class="core-features">
-                <h2>Core Features (Included for Free)</h2>
-                <div class="pills">
-                    <span class="pill selected">Estimating</span>
-                    <span class="pill selected">Project Tracking</span>
-                    <span class="pill selected">Task Management</span>
-                    <span class="pill selected">Time Tracking</span>
-                    <span class="pill selected">Invoicing</span>
-                </div>
-            </div>
-
-            <!-- Additional Features -->
-            <div class="additional-features">
-                <h2>Select Additional Features</h2>
-                <select id="features-dropdown">
-                    <option value="" disabled selected>Select a feature</option>
-                </select>
+    <form id="featureForm">
+        <!-- Core Features Section -->
+        <div class="section">
+            <label for="coreFeatures">Core Features (Included for Free)</label>
+            <div class="pills" id="coreFeatures">
+                <span class="pill">Estimating</span>
+                <span class="pill">Project Tracking</span>
+                <span class="pill">Time Tracking</span>
+                <span class="pill">Tasks</span>
+                <span class="pill">Invoicing</span>
+                <span class="pill">Contact List</span>
             </div>
         </div>
 
-        <!-- Right Section -->
-        <div class="right-section">
-            <h2>Your Selection</h2>
-            <ul id="selected-features"></ul>
-            <div class="price-bar">
-                <div class="progress" id="progress-bar"></div>
-            </div>
-            <p>Estimated Price: $<span id="estimated-price">0</span></p>
+        <!-- Additional Features Section -->
+        <div class="section">
+            <label for="additionalFeatures">Select Additional Features</label>
+            <select id="additionalFeatures" multiple>
+                <option value="AI Estimates">AI Estimates</option>
+                <option value="Multiple Tax Rates">Estimating/Invoicing with Multiple Tax Rates</option>
+                <option value="Foreman Timesheets">Foreman Only Timesheets</option>
+                <option value="Gantt Charts">Scheduling Gantt Charts</option>
+                <option value="Progress Draws">Invoice Progress Draws</option>
+                <option value="Sales Lead Page">Sales Lead Status Page</option>
+                <option value="Purchase Orders">Purchase Orders</option>
+                <option value="Change Orders">Change Orders</option>
+                <option value="RFIs">RFI's</option>
+                <option value="Geolocation">Time Tracking Geolocation</option>
+                <option value="Live Traffic">Time Tracking Distance to Job with Live Traffic</option>
+                <option value="Daily Weather">Daily Weather</option>
+                <option value="Site Reports">Daily Site Reports</option>
+                <option value="AI Scanner">AI Receipt/Invoice Scanner</option>
+                <option value="Material Inventory">Material Inventory</option>
+                <option value="Equipment Inventory">Equipment Inventory</option>
+                <option value="Client Portal">Client Portal</option>
+            </select>
         </div>
-    </div>
-    <script src="script.js"></script>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        const coreFeaturePills = document.querySelectorAll('.pill');
+        coreFeaturePills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                pill.classList.toggle('selected');
+            });
+        });
+
+        document.getElementById('featureForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const selectedCoreFeatures = Array.from(document.querySelectorAll('.pill.selected'))
+                .map(pill => pill.textContent);
+
+            const selectedAdditionalFeatures = Array.from(
+                document.getElementById('additionalFeatures').selectedOptions
+            ).map(option => option.value);
+
+            console.log('Selected Core Features:', selectedCoreFeatures);
+            console.log('Selected Additional Features:', selectedAdditionalFeatures);
+
+            alert('Features Selected! Check console for details.');
+        });
+    </script>
 </body>
 </html>
