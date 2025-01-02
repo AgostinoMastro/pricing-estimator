@@ -8,82 +8,81 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
     margin: 40px auto;
-    padding: 20px;
-    background-color: #fff;
+    width: 90%;
+    max-width: 1200px;
+}
+
+/* Left Section */
+.left-section {
+    width: 60%;
+}
+
+.core-features, .additional-features {
+    background-color: #000;
+    color: #fff;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Header */
-h1 {
-    font-size: 24px;
+    padding: 20px;
     margin-bottom: 20px;
-    color: #333;
 }
 
-h2 {
+.core-features h2, .additional-features h2 {
     font-size: 18px;
-    margin: 20px 0 10px;
+    margin-bottom: 10px;
 }
 
-/* Core Features Section */
-.core-features .pills {
+.pills {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
 }
 
 .pill {
-    padding: 8px 16px;
+    padding: 10px 15px;
     border: 1px solid #ccc;
     border-radius: 20px;
-    background-color: #e9ecef;
-    color: #495057;
-    font-size: 14px;
-    cursor: default;
-}
-
-.pill.selected {
     background-color: #d4edda;
-    border-color: #c3e6cb;
     color: #155724;
+    font-size: 14px;
 }
 
-/* Dropdown Section */
 #features-dropdown {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #fff;
+    border: 1px solid #ddd;
     font-size: 14px;
+    margin-top: 10px;
 }
 
-/* Summary Section */
-.summary {
-    margin-top: 20px;
+/* Right Section */
+.right-section {
+    width: 35%;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.right-section h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
 #selected-features {
     list-style: none;
     padding: 0;
     margin: 10px 0;
-}
-
-#selected-features li {
-    margin: 5px 0;
     font-size: 14px;
 }
 
-/* Price Bar */
 .price-bar {
     position: relative;
     background-color: #e9ecef;
     border-radius: 10px;
     height: 10px;
-    overflow: hidden;
     margin: 15px 0;
 }
 
@@ -100,18 +99,14 @@ h2 {
     color: #333;
 }
 
-/* Layout Adjustments */
-.additional-features, .summary {
-    margin-bottom: 20px;
-}
-
 /* Responsive Design */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .container {
-        padding: 15px;
+        flex-direction: column;
     }
-    
-    h1 {
-        font-size: 20px;
+
+    .left-section, .right-section {
+        width: 100%;
+        margin-bottom: 20px;
     }
 }
