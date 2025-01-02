@@ -8,30 +8,31 @@
 </head>
 <body>
     <div class="container">
-        <h1>Estimate Your Price</h1>
+        <!-- Left Section -->
+        <div class="left-section">
+            <!-- Core Features -->
+            <div class="core-features">
+                <h2>Core Features (Included for Free)</h2>
+                <div class="pills">
+                    <span class="pill selected">Estimating</span>
+                    <span class="pill selected">Project Tracking</span>
+                    <span class="pill selected">Task Management</span>
+                    <span class="pill selected">Time Tracking</span>
+                    <span class="pill selected">Invoicing</span>
+                </div>
+            </div>
 
-        <!-- Core Features -->
-        <div class="core-features">
-            <h2>Core Features (Included for Free)</h2>
-            <div class="pills">
-                <span class="pill selected">Estimating</span>
-                <span class="pill selected">Project Tracking</span>
-                <span class="pill selected">Task Management</span>
-                <span class="pill selected">Time Tracking</span>
-                <span class="pill selected">Invoicing</span>
+            <!-- Additional Features -->
+            <div class="additional-features">
+                <h2>Select Additional Features</h2>
+                <select id="features-dropdown">
+                    <option value="" disabled selected>Select a feature</option>
+                </select>
             </div>
         </div>
 
-        <!-- Additional Features -->
-        <div class="additional-features">
-            <h2>Select Additional Features</h2>
-            <select id="features-dropdown">
-                <option value="" disabled selected>Select a feature</option>
-            </select>
-        </div>
-
-        <!-- Summary -->
-        <div class="summary">
+        <!-- Right Section -->
+        <div class="right-section">
             <h2>Your Selection</h2>
             <ul id="selected-features"></ul>
             <div class="price-bar">
@@ -39,9 +40,7 @@
             </div>
             <p>Estimated Price: $<span id="estimated-price">0</span></p>
         </div>
-
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
